@@ -1,0 +1,89 @@
+# Mistral-Konfiguration (Haupt-KI)
+backends:
+  - name: "mistral-cloud"
+    type: "api"
+    api_url: "https://api.mistral.ai/v1"
+    api_key: "XDV4t93lacBYNOtr6NcdAphmviWsfEsY"
+    model: "mistral-large-latest"
+  - name: "mistral-local"
+    type: "ollama"
+    base_url: "http://localhost:11434"
+    model: "mistral:latest"
+
+# Skills für Mistral
+skills:
+  - voice_interaction
+  - smart_home
+  - calendar
+  - email
+  - translation
+  - knowledge_base
+  - web_search
+  - code_review
+  - file_operations
+  - shell_commands
+  - image_generation
+  - audio_transcription
+  - face_recognition
+  - music_control
+  - notes
+  - tasks
+  - data_analysis
+
+# Workflows
+workflows:
+  enabled:
+    - research_assistant
+    - code_reviewer
+    - document_analyzer
+    - meeting_assistant
+    - creative_writer
+    - data_analyst
+    - auto_coder
+
+# Agents
+agents:
+  enabled:
+    - mistral_agent
+    - auto_coder
+    - data_scientist
+    - devops_assistant
+    - personal_assistant
+
+# Voice-Einstellungen (Sprachsteuerung)
+voice:
+  stt_engine: "google"
+  tts_engine: "gTTS"
+  wake_word: "Mistral"
+  language: "de-DE"
+  microphone_device: "default"
+
+# MCP-Server
+mcp_servers:
+  enabled:
+    - filesystem
+    - git
+    - github
+    - browser
+    - database
+    - docker
+    - http
+
+# Superpowers (Iron-Man-Funktionen)
+superpowers:
+  enabled:
+    - deep_web_analysis
+    - multi_agent_collaboration
+    - voice_interaction
+    - real_time_translation
+    - 3d_avatar
+    - hardware_integration
+    - face_recognition
+    - music_control
+
+# GUI-Einstellungen (für Iron-Man-Interface)
+gui:
+  enabled: true
+  type: "custom"
+  theme: "mistral"
+  resolution: "1000x700"

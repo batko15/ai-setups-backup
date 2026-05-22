@@ -1,0 +1,163 @@
+{
+  "models": {
+    "providers": {
+      "mistral": {
+        "apiKey": "XDV4t93lacBYNOtr6NcdAphmviWsfEsY",
+        "models": [
+          {
+            "id": "mistral-large-latest",
+            "name": "Mistral Large (Cloud)",
+            "reasoning": true,
+            "input": ["text", "audio"],
+            "cost": {"input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0},
+            "contextWindow": 32768,
+            "maxTokens": 8192
+          },
+          {
+            "id": "mistral-small-latest",
+            "name": "Mistral Small (Cloud, schneller)",
+            "reasoning": true,
+            "input": ["text"],
+            "cost": {"input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0},
+            "contextWindow": 32768,
+            "maxTokens": 4096
+          }
+        ]
+      },
+      "ollama": {
+        "baseUrl": "http://localhost:11434",
+        "models": [
+          {
+            "id": "mistral:latest",
+            "name": "Mistral-7B (lokal)",
+            "contextWindow": 32768,
+            "maxTokens": 8192
+          },
+          {
+            "id": "phi3:3.8b",
+            "name": "Phi-3 (lokal, schnell)",
+            "contextWindow": 128000,
+            "maxTokens": 4096
+          }
+        ]
+      }
+    },
+    "defaults": {
+      "primary": "mistral/mistral-large-latest",
+      "fallbacks": ["mistral/mistral-small-latest", "ollama/mistral:latest"]
+    }
+  },
+  "agents": {
+    "enabled": [
+      "mistral_agent",
+      "auto_coder",
+      "data_scientist",
+      "devops_assistant",
+      "personal_assistant",
+      "research_assistant"
+    ],
+    "definitions": {
+      "mistral_agent": {
+        "name": "Mistral-Agent (Haupt-Agent)",
+        "description": "Dein persönlicher Mistral-KI-Assistent mit allen Funktionen.",
+        "model": "mistral/mistral-large-latest",
+        "skills": [
+          "voice_interaction",
+          "smart_home",
+          "calendar",
+          "email",
+          "translation",
+          "knowledge_base",
+          "web_search",
+          "face_recognition",
+          "music_control",
+          "code_review",
+          "file_operations"
+        ],
+        "workflows": [
+          "research_assistant",
+          "meeting_assistant",
+          "personal_organizer"
+        ]
+      },
+      "auto_coder": {
+        "name": "Auto-Coder",
+        "description": "Automatisiertes Codieren und Debugging mit Mistral.",
+        "model": "mistral/mistral-large-latest",
+        "skills": ["code_interpreter", "shell_commands", "file_operations"],
+        "workflows": ["code_reviewer", "auto_coder"]
+      },
+      "data_scientist": {
+        "name": "Datenwissenschaftler",
+        "description": "Datenanalyse und Statistik mit Mistral.",
+        "model": "mistral/mistral-large-latest",
+        "skills": ["data_analysis", "sql_query", "file_operations"],
+        "workflows": ["data_analyst"]
+      }
+    }
+  },
+  "voice": {
+    "enabled": true,
+    "stt": {
+      "engine": "google",
+      "language": "de-DE"
+    },
+    "tts": {
+      "engine": "gTTS",
+      "language": "de",
+      "voice": "de-de"
+    },
+    "wakeWord": "Mistral",
+    "microphoneDevice": "default"
+  },
+  "mcp": {
+    "servers": {
+      "filesystem": {
+        "command": "mcp-server-filesystem",
+        "args": ["--directory", "/storage/emulated/0/"]
+      },
+      "github": {
+        "command": "mcp-server-github",
+        "env": {
+          "GITHUB_TOKEN": "" // Optional
+        }
+      },
+      "http": {
+        "command": "mcp-server-http",
+        "args": ["--port", "8080"]
+      },
+      "sqlite": {
+        "command": "mcp-server-sqlite",
+        "args": ["--database", "/storage/emulated/0/mistral.db"]
+      },
+      "browser": {
+        "command": "mcp-server-browser"
+      },
+      "docker": {
+        "command": "mcp-server-docker"
+      }
+    }
+  },
+  "plugins": {
+    "enabled": [
+      "@openclaw/voice-call",
+      "@openclaw/web-search",
+      "@openclaw/fs",
+      "@openclaw/github",
+      "@openclaw/calculator",
+      "@openclaw/mcp",
+      "@openclaw/image-generation",
+      "@openclaw/audio-transcription"
+    ]
+  },
+  "settings": {
+    "contextWindow": 32768,
+    "maxTokens": 8192,
+    "temperature": 0.7,
+    "streaming": true,
+    "cache": {
+      "enabled": true,
+      "directory": "/storage/emulated/0/openclaw_cache"
+    }
+  }
+}
