@@ -1,0 +1,35 @@
+{
+  "mcpServers": {
+    "atxp": {
+      "command": "/data/data/com.termux/files/usr/bin/atxp",
+      "args": ["mcp"],
+      "env": {
+        "ATXP_CONFIG_PATH": "/data/data/com.termux/files/home/.atxp/config"
+      }
+    },
+    "bundesanzeiger": {
+      "command": "/data/data/com.termux/files/home/mcp-tools/bundesanzeiger-mcp/mcp_server/venv/bin/python",
+      "args": ["/data/data/com.termux/files/home/mcp-tools/bundesanzeiger-mcp/mcp_server/server.py"]
+    },
+    "companyscope": {
+      "command": "node",
+      "args": ["/data/data/com.termux/files/home/mcp-tools/companyscope-mcp/bin/cli.js"]
+    },
+    "openregister": {
+      "command": "/data/data/com.termux/files/home/mcp-tools/openregister-mcp/venv/bin/python",
+      "args": ["/data/data/com.termux/files/home/mcp-tools/openregister-mcp/server.py"]
+    },
+    "tibber": {
+      "command": "/data/data/com.termux/files/home/mcp-tools/tibber-mcp/venv/bin/python",
+      "args": ["/data/data/com.termux/files/home/mcp-tools/tibber-mcp/server.py"]
+    },
+    "linkedapi": {
+      "command": "node",
+      "args": ["/data/data/com.termux/files/home/linkedapi-mcp/dist/index.js"],
+      "env": {
+        "LINKED_API_TOKEN": "linked_mpduwgfneeed9fe16ac841b0d8cbd09848b1f508500b2db4d42fa889",
+        "IDENTIFICATION_TOKEN": ""
+      }
+    }
+  }
+}

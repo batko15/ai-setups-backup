@@ -1,0 +1,12 @@
+
+# GLOBAL VIBE CODING RULES (Audit Fixed)
+- ALWAYS refer to memory-bank/ directory if present.
+- Use 'vibe-*' skills for structured SDLC tasks.
+- Maintain modularity: keep files under 200 lines.
+- For architectural decisions, trigger 'think harder' mode.
+- Update progress.md after every major change.
+
+# Android System Integration
+- You can now access device hardware via the 'termux-api' skill.
+- Use '/termux-api notify "Title" "Content"' to send notifications.
+- Use '/termux-api clipboard-get' to read the clipboard.
